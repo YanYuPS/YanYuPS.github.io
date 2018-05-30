@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="flume," />
 
 
 
@@ -77,14 +77,18 @@
 
 
 
+<meta name="description" content="运行机制/系统结构/简单使用">
+<meta name="keywords" content="flume">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test">
-<meta property="og:url" content="http://yoursite.com/2018/05/30/test/index.html">
+<meta property="og:title" content="flume三：高可用">
+<meta property="og:url" content="http://yoursite.com/2018/01/04/flume三：高可用/index.html">
 <meta property="og:site_name" content="细雨纷纷">
+<meta property="og:description" content="运行机制/系统结构/简单使用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-30T09:02:29.400Z">
+<meta property="og:updated_time" content="2018-05-30T14:48:39.809Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test">
+<meta name="twitter:title" content="flume三：高可用">
+<meta name="twitter:description" content="运行机制/系统结构/简单使用">
 
 
 
@@ -114,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/30/test/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/01/04/flume三：高可用/"/>
 
 
 
 
 
-  <title>test | 细雨纷纷</title>
+  <title>flume三：高可用 | 细雨纷纷</title>
   
 
 
@@ -247,7 +251,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/30/test/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/04/flume三：高可用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="rain">
@@ -264,7 +268,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">test</h1>
+          <h1 class="post-title" itemprop="name headline">flume三：高可用</h1>
         
 
         <div class="post-meta">
@@ -276,8 +280,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-30T17:02:29+08:00">
-                2018-05-30
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-04T13:53:54+08:00">
+                2018-01-04
               </time>
             
 
@@ -286,6 +290,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/大数据/" itemprop="url" rel="index">
+                    <span itemprop="name">大数据</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -314,7 +340,39 @@
       
 
       
-        
+        <p>运行机制/系统结构/简单使用</p>
+<a id="more"></a>
+<h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><p><a href="flume.apache.org">flume.apache.org</a></p>
+<h2 id="运行机制"><a href="#运行机制" class="headerlink" title="运行机制"></a>运行机制</h2><ol>
+<li>flume核心是agent，flume采集系统就是由多个agent连接起来形成的</li>
+<li>agent内部有3个组件</li>
+</ol>
+<ul>
+<li>source 获取数据（采集源，跟数据源对接，获取数据）</li>
+<li>channel 暂存数据（内部数据传输通道）</li>
+<li>sink 推送数据（向下一个agent或者最终存储系统传递数据）</li>
+</ul>
+<h2 id="flume采集系统结构"><a href="#flume采集系统结构" class="headerlink" title="flume采集系统结构"></a>flume采集系统结构</h2><ol>
+<li>简单结构</li>
+</ol>
+<ul>
+<li>单个agent：数据源–source–channel–sink–存储系统</li>
+</ul>
+<ol start="2">
+<li>复杂结构<ul>
+<li>串联：agent–agent</li>
+<li>汇总：agent（两个或以上个）–agent</li>
+<li>推送到不同系统：source–channel（多个）–sink（多个）–存储系统（多个）</li>
+</ul>
+</li>
+</ol>
+<h2 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h2><ol>
+<li>flume的conf下，新建一个文件xx.conf，里面写入agent代码，运行即可</li>
+<li>运行：bin/flume-ng agent -c conf -f conf/xx.conf -n agent1 -Dflume.root.logger=INFO,console<br> <em>-c conf    : 配置文件位置
+ </em>-f conf/xx.conf    ： 具体运行文件位置<br> <em>-n agent1    ：agent名字
+ </em>-Dflume.root.logger=INFO,console    ：打印，方便查看</li>
+</ol>
+
       
     </div>
     
@@ -340,6 +398,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/flume/" rel="tag"><i class="fa fa-tag"></i> flume</a>
+          
+        </div>
+      
 
       
       
@@ -349,8 +413,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/30/ccc/" rel="next" title="ccc">
-                <i class="fa fa-chevron-left"></i> ccc
+              <a href="/2018/01/03/flume二：拦截器/" rel="next" title="flume二：拦截器">
+                <i class="fa fa-chevron-left"></i> flume二：拦截器
               </a>
             
           </div>
@@ -358,6 +422,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/08/flume四：各组件参数/" rel="prev" title="flume四：各组件参数">
+                flume四：各组件参数 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -409,8 +477,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -429,7 +506,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -440,7 +517,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -451,7 +528,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -474,6 +551,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#官网"><span class="nav-number">1.</span> <span class="nav-text">官网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行机制"><span class="nav-number">2.</span> <span class="nav-text">运行机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flume采集系统结构"><span class="nav-number">3.</span> <span class="nav-text">flume采集系统结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单使用"><span class="nav-number">4.</span> <span class="nav-text">简单使用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
