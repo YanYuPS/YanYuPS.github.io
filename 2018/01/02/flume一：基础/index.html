@@ -85,7 +85,7 @@
 <meta property="og:site_name" content="细雨纷纷">
 <meta property="og:description" content="运行机制/系统结构/简单使用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-30T14:48:08.535Z">
+<meta property="og:updated_time" content="2018-05-30T14:55:28.915Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flume一：基础">
 <meta name="twitter:description" content="运行机制/系统结构/简单使用">
@@ -342,7 +342,7 @@
       
         <p>运行机制/系统结构/简单使用</p>
 <a id="more"></a>
-<h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><p><a href="flume.apache.org">flume.apache.org</a></p>
+<h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><p><a href="http://flume.apache.org" target="_blank" rel="noopener">flume.apache.org</a></p>
 <h2 id="运行机制"><a href="#运行机制" class="headerlink" title="运行机制"></a>运行机制</h2><ol>
 <li>flume核心是agent，flume采集系统就是由多个agent连接起来形成的</li>
 <li>agent内部有3个组件</li>
@@ -353,12 +353,10 @@
 <li>sink 推送数据（向下一个agent或者最终存储系统传递数据）</li>
 </ul>
 <h2 id="flume采集系统结构"><a href="#flume采集系统结构" class="headerlink" title="flume采集系统结构"></a>flume采集系统结构</h2><ol>
-<li>简单结构</li>
-</ol>
-<ul>
+<li>简单结构<ul>
 <li>单个agent：数据源–source–channel–sink–存储系统</li>
 </ul>
-<ol start="2">
+</li>
 <li>复杂结构<ul>
 <li>串联：agent–agent</li>
 <li>汇总：agent（两个或以上个）–agent</li>
@@ -368,9 +366,13 @@
 </ol>
 <h2 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h2><ol>
 <li>flume的conf下，新建一个文件xx.conf，里面写入agent代码，运行即可</li>
-<li>运行：bin/flume-ng agent -c conf -f conf/xx.conf -n agent1 -Dflume.root.logger=INFO,console<br> <em>-c conf    : 配置文件位置
- </em>-f conf/xx.conf    ： 具体运行文件位置<br> <em>-n agent1    ：agent名字
- </em>-Dflume.root.logger=INFO,console    ：打印，方便查看</li>
+<li>运行：bin/flume-ng agent -c conf -f conf/xx.conf -n agent1 -Dflume.root.logger=INFO,console<ul>
+<li>-c conf : 配置文件位置</li>
+<li>-f conf/xx.conf ： 具体运行文件位置</li>
+<li>-n agent1 ：agent名字</li>
+<li>-Dflume.root.logger=INFO,console ：打印，方便查看</li>
+</ul>
+</li>
 </ol>
 
       
@@ -502,7 +504,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
