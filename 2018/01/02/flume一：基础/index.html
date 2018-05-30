@@ -85,7 +85,7 @@
 <meta property="og:site_name" content="细雨纷纷">
 <meta property="og:description" content="运行机制/系统结构/简单使用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-30T14:59:44.048Z">
+<meta property="og:updated_time" content="2018-05-30T15:11:03.779Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flume一：基础">
 <meta name="twitter:description" content="运行机制/系统结构/简单使用">
@@ -342,8 +342,8 @@
       
         <p>运行机制/系统结构/简单使用</p>
 <a id="more"></a>
-<h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><p><a href="http://flume.apache.org" target="_blank" rel="noopener">flume.apache.org</a></p>
-<h2 id="运行机制"><a href="#运行机制" class="headerlink" title="运行机制"></a>运行机制</h2><ol>
+<h1 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h1><p><a href="http://flume.apache.org" target="_blank" rel="noopener">flume.apache.org</a></p>
+<h1 id="运行机制"><a href="#运行机制" class="headerlink" title="运行机制"></a>运行机制</h1><ol>
 <li>flume核心是agent，flume采集系统就是由多个agent连接起来形成的</li>
 <li>agent内部有3个组件<ul>
 <li>source 获取数据（采集源，跟数据源对接，获取数据）</li>
@@ -352,7 +352,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="flume采集系统结构"><a href="#flume采集系统结构" class="headerlink" title="flume采集系统结构"></a>flume采集系统结构</h2><ol>
+<h1 id="flume采集系统结构"><a href="#flume采集系统结构" class="headerlink" title="flume采集系统结构"></a>flume采集系统结构</h1><ol>
 <li>简单结构<ul>
 <li>单个agent：数据源–source–channel–sink–存储系统</li>
 </ul>
@@ -364,7 +364,7 @@
 </ul>
 </li>
 </ol>
-<h2 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h2><ol>
+<h1 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h1><ol>
 <li>flume的conf下，新建一个文件xx.conf，里面写入agent代码，运行即可</li>
 <li>运行：bin/flume-ng agent -c conf -f conf/xx.conf -n agent1 -Dflume.root.logger=INFO,console<ul>
 <li>-c conf : 配置文件位置</li>
@@ -415,7 +415,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/01/aaa/" rel="next" title="博客使用">
+              <a href="/2018/01/01/博客使用/" rel="next" title="博客使用">
                 <i class="fa fa-chevron-left"></i> 博客使用
               </a>
             
@@ -563,7 +563,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#官网"><span class="nav-number">1.</span> <span class="nav-text">官网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行机制"><span class="nav-number">2.</span> <span class="nav-text">运行机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flume采集系统结构"><span class="nav-number">3.</span> <span class="nav-text">flume采集系统结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单使用"><span class="nav-number">4.</span> <span class="nav-text">简单使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#官网"><span class="nav-number">1.</span> <span class="nav-text">官网</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运行机制"><span class="nav-number">2.</span> <span class="nav-text">运行机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#flume采集系统结构"><span class="nav-number">3.</span> <span class="nav-text">flume采集系统结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简单使用"><span class="nav-number">4.</span> <span class="nav-text">简单使用</span></a></li></ol></div>
             
 
           </div>
