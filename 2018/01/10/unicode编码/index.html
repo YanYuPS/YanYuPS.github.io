@@ -66,7 +66,7 @@
 
 
 
-  <meta name="keywords" content="unicode," />
+  <meta name="keywords" content="unicode,ASC||,UTF-8," />
 
 
 
@@ -77,18 +77,18 @@
 
 
 
-<meta name="description" content="Flume用来进行日志采集">
-<meta name="keywords" content="unicode">
+<meta name="description" content="ASC||码，UTF-8编码">
+<meta name="keywords" content="unicode,ASC||,UTF-8">
 <meta property="og:type" content="article">
 <meta property="og:title" content="unicode编码">
 <meta property="og:url" content="http://yoursite.com/2018/01/10/unicode编码/index.html">
 <meta property="og:site_name" content="细雨纷纷">
-<meta property="og:description" content="Flume用来进行日志采集">
+<meta property="og:description" content="ASC||码，UTF-8编码">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-01T06:55:38.080Z">
+<meta property="og:updated_time" content="2018-06-01T08:47:07.405Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="unicode编码">
-<meta name="twitter:description" content="Flume用来进行日志采集">
+<meta name="twitter:description" content="ASC||码，UTF-8编码">
 
 
 
@@ -340,39 +340,44 @@
       
 
       
-        <p>Flume用来进行日志采集</p>
+        <p>ASC||码，UTF-8编码</p>
 <a id="more"></a>
-<h1 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h1><p><a href="http://flume.apache.org" target="_blank" rel="noopener">flume.apache.org</a></p>
-<h1 id="运行机制"><a href="#运行机制" class="headerlink" title="运行机制"></a>运行机制</h1><ol>
-<li>flume核心是agent，flume采集系统就是由多个agent连接起来形成的</li>
-<li>agent内部有3个组件<ul>
-<li>source 获取数据（采集源，跟数据源对接，获取数据）</li>
-<li>channel 暂存数据（内部数据传输通道）</li>
-<li>sink 推送数据（向下一个agent或者最终存储系统传递数据）</li>
+<h1 id="ASC-码"><a href="#ASC-码" class="headerlink" title="ASC||码"></a>ASC||码</h1><ol>
+<li>计算机中所有信息都可以表示为一个二进制字符串，每个二进制位有0 1两种状态</li>
+<li>1字节对应8位二进制数，也就是1字节可以表示256种状态</li>
+<li>ASC||码：<ul>
+<li>描述英语中的字符和8位二进制的对应关系</li>
+<li>一共定义了128个字符，用到了后7位，第一位统一为0</li>
+<li>常用：【0-9】对应48-57，【A-Z】对应65-90，【a-z】对应97-122</li>
 </ul>
 </li>
+<li>字符对照表：</li>
 </ol>
-<h1 id="flume采集系统结构"><a href="#flume采集系统结构" class="headerlink" title="flume采集系统结构"></a>flume采集系统结构</h1><ol>
-<li>简单结构<ul>
-<li>单个agent：数据源–source–channel–sink–存储系统</li>
-</ul>
-</li>
-<li>复杂结构<ul>
-<li>串联：agent–agent</li>
-<li>汇总：agent（两个或以上个）–agent</li>
-<li>推送到不同系统：source–channel（多个）–sink（多个）–存储系统（多个）</li>
-</ul>
-</li>
+<p>ASCII码    控制字符    ASCII码    控制字符<br>(十进制)        (十进制)<br>0    NUT    32    (space)<br>1    SOH    33    ！<br>2    STX    34    ”<br>3    ETX    35    #<br>4    EOT    36    $<br>5    ENQ    37    %<br>6    ACK    38    &amp;<br>7    BEL    39    ‘<br>8    BS    40    (<br>9    HT    41    )<br>10    LF    42    *<br>11    VT    43    +<br>12    FF    44    ,<br>13    CR    45    -<br>14    SO    46    .<br>15    SI    47    /</p>
+<p>16    DLE    48    0<br>17    DCI    49    1<br>18    DC2    50    2<br>19    DC3    51    3<br>20    DC4    52    4<br>21    NAK    53    5<br>22    SYN    54    6<br>23    TB    55    7<br>24    CAN    56    8<br>25    EM    57    9<br>26    SUB    58    :<br>27    ESC    59    ;<br>28    FS    60    &lt;<br>29    GS    61    =<br>30    RS    62    &gt;<br>31    US    63    ?</p>
+<p>64    @    96    `<br>65    A    97    a<br>66    B    98    b<br>67    C    99    c<br>68    D    100    d<br>69    E    101    e<br>70    F    102    f<br>71    G    103    g<br>72    H    104    h<br>73    I    105    i<br>74    J    106    j<br>75    K    107    k<br>76    L    108    l<br>77    M    109    m<br>78    N    110    n<br>79    O    111    o</p>
+<p>80    P    112    p<br>81    Q    113    q<br>82    R    114    r<br>83    X    115    s<br>84    T    116    t<br>85    U    117    u<br>86    V    118    v<br>87    W    119    w<br>88    X    120    x<br>89    Y    121    y<br>90    Z    122    z<br>91    [    123    {<br>92    /    124    |<br>93    ]    125    }<br>94    ^    126    ~<br>95    _    127    DEL</p>
+<ol start="5">
+<li>特殊控制字符说明<br>NUL  空        VT   垂直制表    SYN  空转同步<br>SOH  标题开始    FF   走纸控制    ETB  信息组传送结束<br>STX  正文开始    CR   回车    CAN  作废<br>ETX  正文结束    SO   移位输出    EM   纸尽<br>EOY  传输结束    SI   移位输入    SUB  换置<br>ENQ  询问字符    DLE  空格    ESC  换码<br>ACK  承认    DC1  设备控制1    FS   文字分隔符<br>BEL  报警    DC2  设备控制2    GS   组分隔符<br>BS   退一格    DC3  设备控制3    RS   记录分隔符<br>HT   横向列表    DC4  设备控制4    US   单元分隔符<br>LF   换行    NAK  否定    DEL  删除</li>
 </ol>
-<h1 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h1><ol>
-<li>flume的conf下，新建一个文件xx.conf，里面写入agent代码，运行即可</li>
-<li>运行：bin/flume-ng agent -c conf -f conf/xx.conf -n agent1 -Dflume.root.logger=INFO,console<ul>
-<li>-c conf : 配置文件位置</li>
-<li>-f conf/xx.conf ： 具体运行文件位置</li>
-<li>-n agent1 ：agent名字</li>
-<li>-Dflume.root.logger=INFO,console ：打印，方便查看</li>
+<h1 id="unicode"><a href="#unicode" class="headerlink" title="unicode"></a>unicode</h1><ol>
+<li>世界上的所有语言的所有字符，都用一个数字来表示</li>
+<li>字符集（比ASC||码更全面，ASC||码仅记录了英文128个字符，unicode记录了所有字符）</li>
+</ol>
+<h1 id="unicode编码方案"><a href="#unicode编码方案" class="headerlink" title="unicode编码方案"></a>unicode编码方案</h1><pre><code>* UTF-8可变长（常用）
+* UTF-16基础平面用两个字符，辅助平面用四个字符
+* UTF-32四个字符
+</code></pre><h2 id="UTF-8编码"><a href="#UTF-8编码" class="headerlink" title="UTF-8编码"></a>UTF-8编码</h2><ol>
+<li>编码规则：<br>Unicode 十六进制码点范围    UTF-8 二进制<br>0000 0000 - 0000 007F    0xxxxxxx<br>0000 0080 - 0000 07FF    110xxxxx 10xxxxxx<br>0000 0800 - 0000 FFFF    1110xxxx 10xxxxxx 10xxxxxx<br>0001 0000 - 0010 FFFF    11110xxx 10xxxxxx 10xxxxxx 10xxxxxx</li>
+<li>特点：可变长</li>
+<li>1个字节：第一位为0，后面七位对应这个字符的unicode码点，同ASC||码</li>
+<li>n个字节（n&gt;1）：<ul>
+<li>第一个字节的前n设置位1，第n+1位设置为0</li>
+<li>后面字节的前两位设置为10</li>
+<li>剩下的二进制位，用这个字符的unicode码点来填充</li>
 </ul>
 </li>
+<li>例子<br>“汉”的 Unicode 码点是 0x6c49（110 1100 0100 1001），通过上面的对照表可以发现，0x0000 6c49 位于第三行的范围，那么得出其格式为 1110xxxx 10xxxxxx 10xxxxxx。接着，从“汉”的二进制数最后一位开始，从后向前依次填充对应格式中的 x，多出的 x 用 0 补上。这样，就得到了“汉”的 UTF-8 编码为 11100110 10110001 10001001，转换成十六进制就是 0xE6 0xB7 0x89。</li>
 </ol>
 
       
@@ -404,6 +409,10 @@
           
             <a href="/tags/unicode/" rel="tag"><i class="fa fa-tag"></i> unicode</a>
           
+            <a href="/tags/ASC/" rel="tag"><i class="fa fa-tag"></i> ASC||</a>
+          
+            <a href="/tags/UTF-8/" rel="tag"><i class="fa fa-tag"></i> UTF-8</a>
+          
         </div>
       
 
@@ -424,6 +433,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/11/字符串md5加密/" rel="prev" title="字符串md5加密">
+                字符串md5加密 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -504,7 +517,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -526,7 +539,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -559,7 +572,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#官网"><span class="nav-number">1.</span> <span class="nav-text">官网</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运行机制"><span class="nav-number">2.</span> <span class="nav-text">运行机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#flume采集系统结构"><span class="nav-number">3.</span> <span class="nav-text">flume采集系统结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#简单使用"><span class="nav-number">4.</span> <span class="nav-text">简单使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ASC-码"><span class="nav-number">1.</span> <span class="nav-text">ASC||码</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#unicode"><span class="nav-number">2.</span> <span class="nav-text">unicode</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#unicode编码方案"><span class="nav-number">3.</span> <span class="nav-text">unicode编码方案</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#UTF-8编码"><span class="nav-number">3.1.</span> <span class="nav-text">UTF-8编码</span></a></li></ol></li></ol></div>
             
 
           </div>

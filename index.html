@@ -247,6 +247,153 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/11/字符串md5加密/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="rain">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/headPortrait.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="细雨纷纷">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/11/字符串md5加密/" itemprop="url">字符串md5加密</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-11T00:00:00+08:00">
+                2018-01-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机基础/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机基础</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <a id="more"></a>
+<h1 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">$     /**</span><br><span class="line">$     * 字符串md5加密</span><br><span class="line">$     */</span><br><span class="line">$    public static class StringUtils &#123;</span><br><span class="line">$        // 全局数组</span><br><span class="line">$        private final static String[] </span><br><span class="line">$ 		strDigits = &#123; <span class="string">"0"</span>, <span class="string">"1"</span>, <span class="string">"2"</span>, <span class="string">"3"</span>, <span class="string">"4"</span>, <span class="string">"5"</span>,</span><br><span class="line">$        	<span class="string">"6"</span>, <span class="string">"7"</span>, <span class="string">"8"</span>, <span class="string">"9"</span>, <span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, </span><br><span class="line">$ 		<span class="string">"d"</span>, <span class="string">"e"</span>, <span class="string">"f"</span> &#125;;</span><br><span class="line">$        </span><br><span class="line">$        // 返回形式为数字跟字符串</span><br><span class="line">$        private static String byteToArrayString(byte bByte) &#123;</span><br><span class="line">$            int iRet = bByte;</span><br><span class="line">$            // System.out.println(<span class="string">"iRet="</span>+iRet);</span><br><span class="line">$            <span class="keyword">if</span> (iRet &lt; 0) &#123;</span><br><span class="line">$                iRet += 256;</span><br><span class="line">$            &#125;</span><br><span class="line">$            int iD1 = iRet / 16;</span><br><span class="line">$            int iD2 = iRet % 16;</span><br><span class="line">$            <span class="built_in">return</span> strDigits[iD1] + strDigits[iD2];</span><br><span class="line">$        &#125;</span><br><span class="line">$        </span><br><span class="line">$        // 返回形式只为数字</span><br><span class="line">$        private static String byteToNum(byte bByte) &#123;</span><br><span class="line">$            int iRet = bByte;</span><br><span class="line">$            System.out.println(<span class="string">"iRet1="</span> + iRet);</span><br><span class="line">$            <span class="keyword">if</span> (iRet &lt; 0) &#123;</span><br><span class="line">$                iRet += 256;</span><br><span class="line">$            &#125;</span><br><span class="line">$            <span class="built_in">return</span> String.valueOf(iRet);</span><br><span class="line">$        &#125;</span><br><span class="line">$        </span><br><span class="line">$        // 转换字节数组为16进制字串</span><br><span class="line">$        private static String byteToString(byte[] bByte) &#123;</span><br><span class="line">$            StringBuffer sBuffer = new StringBuffer();</span><br><span class="line">$            <span class="keyword">for</span> (int i = 0; i &lt; bByte.length; i++) &#123;</span><br><span class="line">$                sBuffer.append(byteToArrayString(bByte[i]));</span><br><span class="line">$            &#125;</span><br><span class="line">$            <span class="built_in">return</span> sBuffer.toString();</span><br><span class="line">$        &#125;</span><br><span class="line">$        </span><br><span class="line">$        public static String GetMD5Code(String strObj) &#123;</span><br><span class="line">$            String resultString = null;</span><br><span class="line">$            try &#123;</span><br><span class="line">$                resultString = new String(strObj);</span><br><span class="line">$                MessageDigest md = MessageDigest.getInstance(<span class="string">"MD5"</span>);</span><br><span class="line">$                // md.digest() 该函数返回值为存放哈希值结果的byte数组</span><br><span class="line">$                resultString = byteToString(md.digest(strObj.getBytes()));</span><br><span class="line">$            &#125; catch (NoSuchAlgorithmException ex) &#123;</span><br><span class="line">$                ex.printStackTrace();</span><br><span class="line">$            &#125;</span><br><span class="line">$            <span class="built_in">return</span> resultString;</span><br><span class="line">$        &#125;</span><br><span class="line">$    &#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    <div>
+        
+    </div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/01/10/unicode编码/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -339,7 +486,7 @@
 
       
         
-          <p>Flume用来进行日志采集</p>
+          <p>ASC||码，UTF-8编码</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/01/10/unicode编码/#more" rel="contents">
@@ -1389,7 +1536,7 @@
 
       
         
-          <p>文章前说明</p>
+          <p>z</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/01/01/博客使用/#more" rel="contents">
@@ -1484,7 +1631,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1506,7 +1653,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
