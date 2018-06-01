@@ -85,7 +85,7 @@
 <meta property="og:site_name" content="细雨纷纷">
 <meta property="og:description" content="拦截器：interceptors插件式组件，source接收到事件，在传入channel之前，拦截器对这些事件进行处理每个拦截器只处理同一个source接收的事件事件event：body，header">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-01T06:54:45.228Z">
+<meta property="og:updated_time" content="2018-06-01T06:59:56.597Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flume二：拦截器">
 <meta name="twitter:description" content="拦截器：interceptors插件式组件，source接收到事件，在传入channel之前，拦截器对这些事件进行处理每个拦截器只处理同一个source接收的事件事件event：body，header">
@@ -432,7 +432,7 @@
 </li>
 </ol>
 <ul>
-<li>继承interceptor</li>
+<li>实现interceptor接口</li>
 <li>定义变量（由flume文件赋值）</li>
 <li>定义有参构造函数，将配置文件中传过来的unicode编码转换为字符串 <a href="/2018/01/10/unicode编码">unicode编码</a></li>
 <li><p>写具体的处理逻辑：intercept(List<event> events)、intercept(Event event)方法 （批处理掉用单个处理）</event></p>
