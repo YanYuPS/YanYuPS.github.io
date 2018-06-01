@@ -77,18 +77,18 @@
 
 
 
-<meta name="description" content="运行机制/系统结构/简单使用">
+<meta name="description" content="在运行文件中直接配置即可">
 <meta name="keywords" content="flume">
 <meta property="og:type" content="article">
 <meta property="og:title" content="flume三：高可用">
 <meta property="og:url" content="http://yoursite.com/2018/01/03/flume三：高可用/index.html">
 <meta property="og:site_name" content="细雨纷纷">
-<meta property="og:description" content="运行机制/系统结构/简单使用">
+<meta property="og:description" content="在运行文件中直接配置即可">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-01T06:42:09.868Z">
+<meta property="og:updated_time" content="2018-06-01T09:04:10.073Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flume三：高可用">
-<meta name="twitter:description" content="运行机制/系统结构/简单使用">
+<meta name="twitter:description" content="在运行文件中直接配置即可">
 
 
 
@@ -340,37 +340,18 @@
       
 
       
-        <p>运行机制/系统结构/简单使用</p>
+        <p>在运行文件中直接配置即可</p>
 <a id="more"></a>
-<h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><p><a href="flume.apache.org">flume.apache.org</a></p>
-<h2 id="运行机制"><a href="#运行机制" class="headerlink" title="运行机制"></a>运行机制</h2><ol>
-<li>flume核心是agent，flume采集系统就是由多个agent连接起来形成的</li>
-<li>agent内部有3个组件</li>
-</ol>
-<ul>
-<li>source 获取数据（采集源，跟数据源对接，获取数据）</li>
-<li>channel 暂存数据（内部数据传输通道）</li>
-<li>sink 推送数据（向下一个agent或者最终存储系统传递数据）</li>
-</ul>
-<h2 id="flume采集系统结构"><a href="#flume采集系统结构" class="headerlink" title="flume采集系统结构"></a>flume采集系统结构</h2><ol>
-<li>简单结构</li>
-</ol>
-<ul>
-<li>单个agent：数据源–source–channel–sink–存储系统</li>
-</ul>
-<ol start="2">
-<li>复杂结构<ul>
-<li>串联：agent–agent</li>
-<li>汇总：agent（两个或以上个）–agent</li>
-<li>推送到不同系统：source–channel（多个）–sink（多个）–存储系统（多个）</li>
-</ul>
+<h1 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="comment">#两个sink</span></span><br><span class="line">$ a1.sinks=k1 k2</span><br><span class="line">$ <span class="comment">#sinkgroups</span></span><br><span class="line">$ a1.sinkgroups=g1</span><br><span class="line">$ a1.sinkgroups.g1.sinks=k1 k2</span><br><span class="line">$ <span class="comment">#两个sink的参数（略）</span></span><br><span class="line">$ <span class="comment">#高可用配置（见下面）</span></span><br></pre></td></tr></table></figure>
+<h1 id="负载均衡：lode-balance"><a href="#负载均衡：lode-balance" class="headerlink" title="负载均衡：lode_balance"></a>负载均衡：lode_balance</h1><ol>
+<li>采集汇总到多个agent时，通过一定的方案使这几个agent接收到数量相差不多的消息</li>
+<li>例子<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="comment">#高可用配置--负载均衡</span></span><br><span class="line">$ a1.sinkgroups.g1.processor.type=lode_balance</span><br><span class="line">$ <span class="comment">#默认是轮询round_robin，还可以选择随机random</span></span><br><span class="line">$ a1.sinkgroups.g1.processor.selector = round_robin</span><br><span class="line">$ <span class="comment">#如果backoff被开启，则sink processor会屏蔽故障的sink</span></span><br><span class="line">$ a1.sinkgroups.g1.processor.backoff = <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h2><ol>
-<li>flume的conf下，新建一个文件xx.conf，里面写入agent代码，运行即可</li>
-<li>运行：bin/flume-ng agent -c conf -f conf/xx.conf -n agent1 -Dflume.root.logger=INFO,console<br> <em>-c conf    : 配置文件位置
- </em>-f conf/xx.conf    ： 具体运行文件位置<br> <em>-n agent1    ：agent名字
- </em>-Dflume.root.logger=INFO,console    ：打印，方便查看</li>
+<h1 id="故障转移：failover"><a href="#故障转移：failover" class="headerlink" title="故障转移：failover"></a>故障转移：failover</h1><ol>
+<li>采集汇总时，设置两个agent，一个出故障时，自动换用另一个</li>
+<li>例子<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="comment">#高可用配置--故障转移</span></span><br><span class="line">$ a1.sinkgroups.g1.processor.type=failover</span><br><span class="line">$ <span class="comment">#设置两个的优先级，数字越大的优先级越高</span></span><br><span class="line">$ a1.sinkgroups.g1.processor.priority.k1 = 10</span><br><span class="line">$ a1.sinkgroups.g1.processor.priority.k2 = 5</span><br><span class="line">$ <span class="comment">#k1挂了，经过10s后传给k2，默认30秒</span></span><br><span class="line">$ a1.sinkgroups.g1.processor.maxpenalty = 10000</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 
       
@@ -561,7 +542,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#官网"><span class="nav-number">1.</span> <span class="nav-text">官网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行机制"><span class="nav-number">2.</span> <span class="nav-text">运行机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flume采集系统结构"><span class="nav-number">3.</span> <span class="nav-text">flume采集系统结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单使用"><span class="nav-number">4.</span> <span class="nav-text">简单使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础配置"><span class="nav-number">1.</span> <span class="nav-text">基础配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#负载均衡：lode-balance"><span class="nav-number">2.</span> <span class="nav-text">负载均衡：lode_balance</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#故障转移：failover"><span class="nav-number">3.</span> <span class="nav-text">故障转移：failover</span></a></li></ol></div>
             
 
           </div>
