@@ -77,18 +77,18 @@
 
 
 
-<meta name="description" content="运行机制/系统结构/简单使用">
+<meta name="description" content="12345678$ #定义三大组件$ a1.sources=r1$ a1.channels=c1$ a1.sinks=k1$ #三大组件参数,拦截器（略）$ #三大组件链接 **注意：r1.channals和k1.channel**$ a1.sources.r1.channals=c1$ a1.sources.k1.channel=c1">
 <meta name="keywords" content="flume">
 <meta property="og:type" content="article">
 <meta property="og:title" content="flume四：各组件参数">
 <meta property="og:url" content="http://yoursite.com/2018/01/04/flume四：各组件参数/index.html">
 <meta property="og:site_name" content="细雨纷纷">
-<meta property="og:description" content="运行机制/系统结构/简单使用">
+<meta property="og:description" content="12345678$ #定义三大组件$ a1.sources=r1$ a1.channels=c1$ a1.sinks=k1$ #三大组件参数,拦截器（略）$ #三大组件链接 **注意：r1.channals和k1.channel**$ a1.sources.r1.channals=c1$ a1.sources.k1.channel=c1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-01T06:42:18.263Z">
+<meta property="og:updated_time" content="2018-06-01T09:32:35.073Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flume四：各组件参数">
-<meta name="twitter:description" content="运行机制/系统结构/简单使用">
+<meta name="twitter:description" content="12345678$ #定义三大组件$ a1.sources=r1$ a1.channels=c1$ a1.sinks=k1$ #三大组件参数,拦截器（略）$ #三大组件链接 **注意：r1.channals和k1.channel**$ a1.sources.r1.channals=c1$ a1.sources.k1.channel=c1">
 
 
 
@@ -340,39 +340,16 @@
       
 
       
-        <p>运行机制/系统结构/简单使用</p>
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="comment">#定义三大组件</span></span><br><span class="line">$ a1.sources=r1</span><br><span class="line">$ a1.channels=c1</span><br><span class="line">$ a1.sinks=k1</span><br><span class="line">$ <span class="comment">#三大组件参数,拦截器（略）</span></span><br><span class="line">$ <span class="comment">#三大组件链接 **注意：r1.channals和k1.channel**</span></span><br><span class="line">$ a1.sources.r1.channals=c1</span><br><span class="line">$ a1.sources.k1.channel=c1</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h2 id="官网"><a href="#官网" class="headerlink" title="官网"></a>官网</h2><p><a href="flume.apache.org">flume.apache.org</a></p>
-<h2 id="运行机制"><a href="#运行机制" class="headerlink" title="运行机制"></a>运行机制</h2><ol>
-<li>flume核心是agent，flume采集系统就是由多个agent连接起来形成的</li>
-<li>agent内部有3个组件</li>
-</ol>
-<ul>
-<li>source 获取数据（采集源，跟数据源对接，获取数据）</li>
-<li>channel 暂存数据（内部数据传输通道）</li>
-<li>sink 推送数据（向下一个agent或者最终存储系统传递数据）</li>
+<h1 id="source组件"><a href="#source组件" class="headerlink" title="source组件"></a>source组件</h1><ul>
+<li>type类型：netcat、avro、spooldir、exec</li>
 </ul>
-<h2 id="flume采集系统结构"><a href="#flume采集系统结构" class="headerlink" title="flume采集系统结构"></a>flume采集系统结构</h2><ol>
-<li>简单结构</li>
-</ol>
-<ul>
-<li>单个agent：数据源–source–channel–sink–存储系统</li>
-</ul>
-<ol start="2">
-<li>复杂结构<ul>
-<li>串联：agent–agent</li>
-<li>汇总：agent（两个或以上个）–agent</li>
-<li>推送到不同系统：source–channel（多个）–sink（多个）–存储系统（多个）</li>
-</ul>
-</li>
-</ol>
-<h2 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h2><ol>
-<li>flume的conf下，新建一个文件xx.conf，里面写入agent代码，运行即可</li>
-<li>运行：bin/flume-ng agent -c conf -f conf/xx.conf -n agent1 -Dflume.root.logger=INFO,console<br> <em>-c conf    : 配置文件位置
- </em>-f conf/xx.conf    ： 具体运行文件位置<br> <em>-n agent1    ：agent名字
- </em>-Dflume.root.logger=INFO,console    ：打印，方便查看</li>
-</ol>
-
+<h2 id="netcat：监控某个端口是否有数据"><a href="#netcat：监控某个端口是否有数据" class="headerlink" title="netcat：监控某个端口是否有数据"></a>netcat：监控某个端口是否有数据</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ a1.sources.r1.type=netcat</span><br><span class="line">$ <span class="comment">#服务器名字或id，0.0.0.0表示任意服务器</span></span><br><span class="line">$ 	       .<span class="built_in">bind</span>=0.0.0.0</span><br><span class="line">$ 	       .port=4444</span><br></pre></td></tr></table></figure>
+<h2 id="avro：自带反序列化，和sink的avro（序列化）连用"><a href="#avro：自带反序列化，和sink的avro（序列化）连用" class="headerlink" title="avro：自带反序列化，和sink的avro（序列化）连用"></a>avro：自带反序列化，和sink的avro（序列化）连用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ a1.sources.r1.type=avro</span><br><span class="line">$ 	       .<span class="built_in">bind</span>=0.0.0.0</span><br><span class="line">$ 	       .port=4444</span><br></pre></td></tr></table></figure>
+<h2 id="spooldir：监控目录变化"><a href="#spooldir：监控目录变化" class="headerlink" title="spooldir：监控目录变化"></a>spooldir：监控目录变化</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ a1.sources.r1.type=spooldir</span><br><span class="line">$ 	       .spoolDir=/root/data/</span><br></pre></td></tr></table></figure>
+<h2 id="exec：表示用shell命令，例如监控日志文件"><a href="#exec：表示用shell命令，例如监控日志文件" class="headerlink" title="exec：表示用shell命令，例如监控日志文件"></a>exec：表示用shell命令，例如监控日志文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ a1.sources.r1.type=<span class="built_in">exec</span></span><br><span class="line">$ 	       .<span class="built_in">command</span>=tail -F /root/test.log</span><br></pre></td></tr></table></figure>
+<h1 id="channel组件"><a href="#channel组件" class="headerlink" title="channel组件"></a>channel组件</h1><h1 id="sink组件"><a href="#sink组件" class="headerlink" title="sink组件"></a>sink组件</h1>
       
     </div>
     
@@ -561,7 +538,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#官网"><span class="nav-number">1.</span> <span class="nav-text">官网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行机制"><span class="nav-number">2.</span> <span class="nav-text">运行机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flume采集系统结构"><span class="nav-number">3.</span> <span class="nav-text">flume采集系统结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单使用"><span class="nav-number">4.</span> <span class="nav-text">简单使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#source组件"><span class="nav-number">1.</span> <span class="nav-text">source组件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#netcat：监控某个端口是否有数据"><span class="nav-number">1.1.</span> <span class="nav-text">netcat：监控某个端口是否有数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#avro：自带反序列化，和sink的avro（序列化）连用"><span class="nav-number">1.2.</span> <span class="nav-text">avro：自带反序列化，和sink的avro（序列化）连用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spooldir：监控目录变化"><span class="nav-number">1.3.</span> <span class="nav-text">spooldir：监控目录变化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exec：表示用shell命令，例如监控日志文件"><span class="nav-number">1.4.</span> <span class="nav-text">exec：表示用shell命令，例如监控日志文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#channel组件"><span class="nav-number">2.</span> <span class="nav-text">channel组件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sink组件"><span class="nav-number">3.</span> <span class="nav-text">sink组件</span></a></li></ol></div>
             
 
           </div>

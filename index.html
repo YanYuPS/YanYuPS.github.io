@@ -636,14 +636,10 @@
 
       
         
-          <p>运行机制/系统结构/简单使用</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/09/flume六：面试/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <a id="more"></a>
+
+          
         
       
     </div>
@@ -786,14 +782,10 @@
 
       
         
-          <p>运行机制/系统结构/简单使用</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/08/flume五：例子--日志采集到kafka/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <a id="more"></a>
+
+          
         
       
     </div>
@@ -936,7 +928,7 @@
 
       
         
-          <p>运行机制/系统结构/简单使用</p>
+          <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="comment">#定义三大组件</span></span><br><span class="line">$ a1.sources=r1</span><br><span class="line">$ a1.channels=c1</span><br><span class="line">$ a1.sinks=k1</span><br><span class="line">$ <span class="comment">#三大组件参数,拦截器（略）</span></span><br><span class="line">$ <span class="comment">#三大组件链接 **注意：r1.channals和k1.channel**</span></span><br><span class="line">$ a1.sources.r1.channals=c1</span><br><span class="line">$ a1.sources.k1.channel=c1</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/01/04/flume四：各组件参数/#more" rel="contents">
