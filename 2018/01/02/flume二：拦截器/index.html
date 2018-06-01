@@ -85,7 +85,7 @@
 <meta property="og:site_name" content="细雨纷纷">
 <meta property="og:description" content="拦截器：interceptors插件式组件，source接收到事件，在传入channel之前，拦截器对这些事件进行处理每个拦截器只处理同一个source接收的事件事件event：body，header">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-01T06:41:55.077Z">
+<meta property="og:updated_time" content="2018-06-01T06:54:45.228Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flume二：拦截器">
 <meta name="twitter:description" content="拦截器：interceptors插件式组件，source接收到事件，在传入channel之前，拦截器对这些事件进行处理每个拦截器只处理同一个source接收的事件事件event：body，header">
@@ -426,7 +426,7 @@
 </ol>
 <h1 id="自定义拦截器"><a href="#自定义拦截器" class="headerlink" title="自定义拦截器"></a>自定义拦截器</h1><ol>
 <li><p>flume文件代码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ a1.sources.r1.interceptors=i5</span><br><span class="line">$ a1.sources.r1.interceptors.i5.type=xx.xx.xx<span class="variable">$Builder</span> （全路径<span class="variable">$Builder</span>）</span><br><span class="line">$ a1.sources.r1.interceptors.i5.变量1=变量1的值</span><br><span class="line">$ a1.sources.r1.interceptors.i5.变量2=变量2的值</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ a1.sources.r1.interceptors=i5</span><br><span class="line">$ a1.sources.r1.interceptors.i5.type=xx.xx.xx<span class="variable">$Builder</span> </span><br><span class="line">$ 	（全路径<span class="variable">$Builder</span>）</span><br><span class="line">$ a1.sources.r1.interceptors.i5.变量1=变量1的值</span><br><span class="line">$ a1.sources.r1.interceptors.i5.变量2=变量2的值</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>类代码：定义类xx</p>
 </li>
@@ -434,8 +434,10 @@
 <ul>
 <li>继承interceptor</li>
 <li>定义变量（由flume文件赋值）</li>
-<li>定义有参构造函数，将配置文件中传过来的unicode编码转换为字符串 <a href="/_posts/unicode编码">unicode编码</a></li>
-<li></li>
+<li>定义有参构造函数，将配置文件中传过来的unicode编码转换为字符串 <a href="/2018/01/10/unicode编码">unicode编码</a></li>
+<li><p>写具体的处理逻辑：intercept(List<event> events)、intercept(Event event)方法 （批处理掉用单个处理）</event></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ String line=new String(event.getBody(),CharSets.UFT_8);</span><br><span class="line">$ event.setBody(newLine.getBytes(CharSets.UFT_8));</span><br></pre></td></tr></table></figure>
+</li>
 <li></li>
 <li>打成jar包，放到flume的lib下</li>
 </ul>
