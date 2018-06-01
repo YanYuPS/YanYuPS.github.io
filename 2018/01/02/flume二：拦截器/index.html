@@ -85,7 +85,7 @@
 <meta property="og:site_name" content="细雨纷纷">
 <meta property="og:description" content="拦截器：interceptors插件式组件，source接收到事件，在传入channel之前，拦截器对这些事件进行处理每个拦截器只处理同一个source接收的事件事件event：body，header">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-01T07:27:09.568Z">
+<meta property="og:updated_time" content="2018-06-01T09:38:21.496Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flume二：拦截器">
 <meta name="twitter:description" content="拦截器：interceptors插件式组件，source接收到事件，在传入channel之前，拦截器对这些事件进行处理每个拦截器只处理同一个source接收的事件事件event：body，header">
@@ -348,7 +348,7 @@
 </ul>
 <ol>
 <li><p>例子</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ agent1.sources.source1.interceptors=i1 </span><br><span class="line">$ agent1.sources.source1.interceptors.i1.type=timestamp </span><br><span class="line">$ agent1.sources.source1.interceptors.i1.preserveExisting=<span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">agent1.sources.source1.interceptors=i1 </span><br><span class="line">agent1.sources.source1.interceptors.i1.type=timestamp </span><br><span class="line">agent1.sources.source1.interceptors.i1.preserveExisting=<span class="literal">false</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>说明</p>
 <ul>
@@ -367,7 +367,7 @@
 </ul>
 <ol>
 <li><p>例子</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ a1.sources.r1.interceptors=i2</span><br><span class="line">$ a1.sources.r1.interceptors.i2.type=host</span><br><span class="line">$ a1.sources.r1.interceptors.i2.hostHeader=host</span><br><span class="line">$ a1.sources.r1.interceptors.i2.useIP=<span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a1.sources.r1.interceptors=i2</span><br><span class="line">a1.sources.r1.interceptors.i2.type=host</span><br><span class="line">a1.sources.r1.interceptors.i2.hostHeader=host</span><br><span class="line">a1.sources.r1.interceptors.i2.useIP=<span class="literal">false</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>说明</p>
 <ul>
@@ -386,7 +386,7 @@
 </ul>
 <ol>
 <li><p>例子</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ a1.sources.r1.interceptors=i3</span><br><span class="line">$ a1.sources.r1.interceptors.i3.type=static</span><br><span class="line">$ a1.sources.r1.interceptors.i3.key=<span class="built_in">type</span></span><br><span class="line">$ a1.sources.r1.interceptors.i3.value=<span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a1.sources.r1.interceptors=i3</span><br><span class="line">a1.sources.r1.interceptors.i3.type=static</span><br><span class="line">a1.sources.r1.interceptors.i3.key=<span class="built_in">type</span></span><br><span class="line">a1.sources.r1.interceptors.i3.value=<span class="built_in">log</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>说明</p>
 <ul>
@@ -405,7 +405,7 @@
 </ul>
 <ol>
 <li><p>例子</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ a1.sources.r1.interceptors=i4</span><br><span class="line">$ a1.sources.r1.interceptors.i4.type=REGEX_FILTER</span><br><span class="line">$ a1.sources.r1.interceptors.i4.regex=(rm)|(<span class="built_in">kill</span>)</span><br><span class="line">$ a1.sources.r1.interceptors.i4.excludeEvents=<span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a1.sources.r1.interceptors=i4</span><br><span class="line">a1.sources.r1.interceptors.i4.type=REGEX_FILTER</span><br><span class="line">a1.sources.r1.interceptors.i4.regex=(rm)|(<span class="built_in">kill</span>)</span><br><span class="line">a1.sources.r1.interceptors.i4.excludeEvents=<span class="literal">false</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>说明</p>
 <ul>
@@ -426,7 +426,7 @@
 </ol>
 <h1 id="自定义拦截器"><a href="#自定义拦截器" class="headerlink" title="自定义拦截器"></a>自定义拦截器</h1><ol>
 <li><p>flume文件代码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ a1.sources.r1.interceptors=i5</span><br><span class="line">$ a1.sources.r1.interceptors.i5.type=xx.xx.xx<span class="variable">$Builder</span> </span><br><span class="line">$ 	（全路径<span class="variable">$Builder</span>）</span><br><span class="line">$ a1.sources.r1.interceptors.i5.变量1=变量1的值</span><br><span class="line">$ a1.sources.r1.interceptors.i5.变量2=变量2的值</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a1.sources.r1.interceptors=i5</span><br><span class="line">a1.sources.r1.interceptors.i5.type=xx.xx.xx<span class="variable">$Builder</span> </span><br><span class="line">	（全路径<span class="variable">$Builder</span>）</span><br><span class="line">a1.sources.r1.interceptors.i5.变量1=变量1的值</span><br><span class="line">a1.sources.r1.interceptors.i5.变量2=变量2的值</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>类代码：定义类xx</p>
 </li>
@@ -436,22 +436,22 @@
 <ul>
 <li>定义变量（由flume文件赋值）</li>
 <li>定义有参构造函数，将配置文件中传过来的unicode编码转换为字符串 <a href="/2018/01/10/unicode编码">（unicode编码）</a></li>
-<li>写具体的处理逻辑：intercept(List<event> events)、intercept(Event event)方法 （批处理掉用单个处理）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ String line=new String(event.getBody(),CharSets.UFT_8);</span><br><span class="line">$ event.setBody(newLine.getBytes(CharSets.UFT_8));</span><br></pre></td></tr></table></figure>
+<li>写具体的处理逻辑：intercept(List<event> events)、intercept(Event event)方法 （批处理掉用单个处理）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String line=new String(event.getBody(),CharSets.UFT_8);</span><br><span class="line">event.setBody(newLine.getBytes(CharSets.UFT_8));</span><br></pre></td></tr></table></figure>
 </event></li>
 </ul>
 </li>
 <li><p>Interceptor中定义了一个内部接口Builder</p>
 <ul>
 <li><p>定义一个内部类，来实现内部接口Builder（自理解：对于flume文件没有赋值的变量，给出其默认值）</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ public static Builder implements Interceptor.Builder</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">public static Builder implements Interceptor.Builder</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>定义变量，同xx类</p>
 </li>
 <li><p>configure方法：进行了一些参数配置，在flume文件没有配置一些参数时，给出其默认值</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ public void configure(Context context)&#123;</span><br><span class="line">$ 	变量1 = context.getString(默认值);</span><br><span class="line">$ 	变量2 = context.getString(默认值);</span><br><span class="line">$ &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public void configure(Context context)&#123;</span><br><span class="line">	变量1 = context.getString(默认值);</span><br><span class="line">	变量2 = context.getString(默认值);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>build方法：返回一个xx对象</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ public Interceptor <span class="function"><span class="title">build</span></span>()&#123;</span><br><span class="line">$ 	new xx(变量1，变量2);</span><br><span class="line">$ &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public Interceptor <span class="function"><span class="title">build</span></span>()&#123;</span><br><span class="line">	new xx(变量1，变量2);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 </li>

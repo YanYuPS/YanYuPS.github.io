@@ -77,18 +77,18 @@
 
 
 
-<meta name="description" content="12345678$ #定义三大组件$ a1.sources=r1$ a1.channels=c1$ a1.sinks=k1$ #三大组件参数,拦截器（略）$ #三大组件链接 **注意：r1.channals和k1.channel**$ a1.sources.r1.channals=c1$ a1.sources.k1.channel=c1">
+<meta name="description" content="12345678#定义三大组件a1.sources=r1a1.channels=c1a1.sinks=k1#三大组件参数,拦截器（略）#三大组件链接 **注意：r1.channals和k1.channel**a1.sources.r1.channals=c1a1.sources.k1.channel=c1">
 <meta name="keywords" content="flume">
 <meta property="og:type" content="article">
 <meta property="og:title" content="flume四：各组件参数">
 <meta property="og:url" content="http://yoursite.com/2018/01/04/flume四：各组件参数/index.html">
 <meta property="og:site_name" content="细雨纷纷">
-<meta property="og:description" content="12345678$ #定义三大组件$ a1.sources=r1$ a1.channels=c1$ a1.sinks=k1$ #三大组件参数,拦截器（略）$ #三大组件链接 **注意：r1.channals和k1.channel**$ a1.sources.r1.channals=c1$ a1.sources.k1.channel=c1">
+<meta property="og:description" content="12345678#定义三大组件a1.sources=r1a1.channels=c1a1.sinks=k1#三大组件参数,拦截器（略）#三大组件链接 **注意：r1.channals和k1.channel**a1.sources.r1.channals=c1a1.sources.k1.channel=c1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-01T09:32:35.073Z">
+<meta property="og:updated_time" content="2018-06-01T09:38:59.678Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flume四：各组件参数">
-<meta name="twitter:description" content="12345678$ #定义三大组件$ a1.sources=r1$ a1.channels=c1$ a1.sinks=k1$ #三大组件参数,拦截器（略）$ #三大组件链接 **注意：r1.channals和k1.channel**$ a1.sources.r1.channals=c1$ a1.sources.k1.channel=c1">
+<meta name="twitter:description" content="12345678#定义三大组件a1.sources=r1a1.channels=c1a1.sinks=k1#三大组件参数,拦截器（略）#三大组件链接 **注意：r1.channals和k1.channel**a1.sources.r1.channals=c1a1.sources.k1.channel=c1">
 
 
 
@@ -340,15 +340,15 @@
       
 
       
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="comment">#定义三大组件</span></span><br><span class="line">$ a1.sources=r1</span><br><span class="line">$ a1.channels=c1</span><br><span class="line">$ a1.sinks=k1</span><br><span class="line">$ <span class="comment">#三大组件参数,拦截器（略）</span></span><br><span class="line">$ <span class="comment">#三大组件链接 **注意：r1.channals和k1.channel**</span></span><br><span class="line">$ a1.sources.r1.channals=c1</span><br><span class="line">$ a1.sources.k1.channel=c1</span><br></pre></td></tr></table></figure>
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#定义三大组件</span></span><br><span class="line">a1.sources=r1</span><br><span class="line">a1.channels=c1</span><br><span class="line">a1.sinks=k1</span><br><span class="line"><span class="comment">#三大组件参数,拦截器（略）</span></span><br><span class="line"><span class="comment">#三大组件链接 **注意：r1.channals和k1.channel**</span></span><br><span class="line">a1.sources.r1.channals=c1</span><br><span class="line">a1.sources.k1.channel=c1</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h1 id="source组件"><a href="#source组件" class="headerlink" title="source组件"></a>source组件</h1><ul>
 <li>type类型：netcat、avro、spooldir、exec</li>
 </ul>
-<h2 id="netcat：监控某个端口是否有数据"><a href="#netcat：监控某个端口是否有数据" class="headerlink" title="netcat：监控某个端口是否有数据"></a>netcat：监控某个端口是否有数据</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ a1.sources.r1.type=netcat</span><br><span class="line">$ <span class="comment">#服务器名字或id，0.0.0.0表示任意服务器</span></span><br><span class="line">$ 	       .<span class="built_in">bind</span>=0.0.0.0</span><br><span class="line">$ 	       .port=4444</span><br></pre></td></tr></table></figure>
-<h2 id="avro：自带反序列化，和sink的avro（序列化）连用"><a href="#avro：自带反序列化，和sink的avro（序列化）连用" class="headerlink" title="avro：自带反序列化，和sink的avro（序列化）连用"></a>avro：自带反序列化，和sink的avro（序列化）连用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ a1.sources.r1.type=avro</span><br><span class="line">$ 	       .<span class="built_in">bind</span>=0.0.0.0</span><br><span class="line">$ 	       .port=4444</span><br></pre></td></tr></table></figure>
-<h2 id="spooldir：监控目录变化"><a href="#spooldir：监控目录变化" class="headerlink" title="spooldir：监控目录变化"></a>spooldir：监控目录变化</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ a1.sources.r1.type=spooldir</span><br><span class="line">$ 	       .spoolDir=/root/data/</span><br></pre></td></tr></table></figure>
-<h2 id="exec：表示用shell命令，例如监控日志文件"><a href="#exec：表示用shell命令，例如监控日志文件" class="headerlink" title="exec：表示用shell命令，例如监控日志文件"></a>exec：表示用shell命令，例如监控日志文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ a1.sources.r1.type=<span class="built_in">exec</span></span><br><span class="line">$ 	       .<span class="built_in">command</span>=tail -F /root/test.log</span><br></pre></td></tr></table></figure>
+<h2 id="netcat：监控某个端口是否有数据"><a href="#netcat：监控某个端口是否有数据" class="headerlink" title="netcat：监控某个端口是否有数据"></a>netcat：监控某个端口是否有数据</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a1.sources.r1.type=netcat</span><br><span class="line"><span class="comment">#服务器名字或id，0.0.0.0表示任意服务器</span></span><br><span class="line">	       .<span class="built_in">bind</span>=0.0.0.0</span><br><span class="line">	       .port=4444</span><br></pre></td></tr></table></figure>
+<h2 id="avro：自带反序列化，和sink的avro（序列化）连用"><a href="#avro：自带反序列化，和sink的avro（序列化）连用" class="headerlink" title="avro：自带反序列化，和sink的avro（序列化）连用"></a>avro：自带反序列化，和sink的avro（序列化）连用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a1.sources.r1.type=avro</span><br><span class="line">	       .<span class="built_in">bind</span>=0.0.0.0</span><br><span class="line">	       .port=4444</span><br></pre></td></tr></table></figure>
+<h2 id="spooldir：监控目录变化"><a href="#spooldir：监控目录变化" class="headerlink" title="spooldir：监控目录变化"></a>spooldir：监控目录变化</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a1.sources.r1.type=spooldir</span><br><span class="line">	       .spoolDir=/root/data/</span><br></pre></td></tr></table></figure>
+<h2 id="exec：表示用shell命令，例如监控日志文件"><a href="#exec：表示用shell命令，例如监控日志文件" class="headerlink" title="exec：表示用shell命令，例如监控日志文件"></a>exec：表示用shell命令，例如监控日志文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a1.sources.r1.type=<span class="built_in">exec</span></span><br><span class="line">	       .<span class="built_in">command</span>=tail -F /root/test.log</span><br></pre></td></tr></table></figure>
 <h1 id="channel组件"><a href="#channel组件" class="headerlink" title="channel组件"></a>channel组件</h1><h1 id="sink组件"><a href="#sink组件" class="headerlink" title="sink组件"></a>sink组件</h1>
       
     </div>
