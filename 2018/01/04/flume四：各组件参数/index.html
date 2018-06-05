@@ -85,7 +85,7 @@
 <meta property="og:site_name" content="细雨纷纷">
 <meta property="og:description" content="12345678#定义三大组件a1.sources=r1a1.channels=c1a1.sinks=k1#三大组件参数,拦截器（略）#三大组件链接 **注意：r1.channals和k1.channel**a1.sources.r1.channals=c1a1.sources.k1.channel=c1">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-01T09:43:45.723Z">
+<meta property="og:updated_time" content="2018-06-05T04:32:17.456Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="flume四：各组件参数">
 <meta name="twitter:description" content="12345678#定义三大组件a1.sources=r1a1.channels=c1a1.sinks=k1#三大组件参数,拦截器（略）#三大组件链接 **注意：r1.channals和k1.channel**a1.sources.r1.channals=c1a1.sources.k1.channel=c1">
@@ -347,14 +347,29 @@
 </ul>
 <h2 id="netcat：监控某个端口是否有数据"><a href="#netcat：监控某个端口是否有数据" class="headerlink" title="netcat：监控某个端口是否有数据"></a>netcat：监控某个端口是否有数据</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a1.sources.r1.type=netcat</span><br><span class="line"><span class="comment">#服务器名字或id，0.0.0.0表示任意服务器</span></span><br><span class="line">	       .<span class="built_in">bind</span>=0.0.0.0</span><br><span class="line">	       .port=4444</span><br></pre></td></tr></table></figure>
 <h2 id="avro：自带反序列化，和sink的avro（序列化）连用"><a href="#avro：自带反序列化，和sink的avro（序列化）连用" class="headerlink" title="avro：自带反序列化，和sink的avro（序列化）连用"></a>avro：自带反序列化，和sink的avro（序列化）连用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a1.sources.r1.type=avro</span><br><span class="line">	       .<span class="built_in">bind</span>=0.0.0.0</span><br><span class="line">	       .port=4444</span><br></pre></td></tr></table></figure>
-<h2 id="spooldir：监控目录变化"><a href="#spooldir：监控目录变化" class="headerlink" title="spooldir：监控目录变化"></a>spooldir：监控目录变化</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a1.sources.r1.type=spooldir</span><br><span class="line">	       .spoolDir=/root/data/</span><br></pre></td></tr></table></figure>
+<h2 id="spooldir：监控目录变化"><a href="#spooldir：监控目录变化" class="headerlink" title="spooldir：监控目录变化"></a>spooldir：监控目录变化</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a1.sources.r1.type=spooldir</span><br><span class="line"><span class="comment">#监控hdfs目录</span></span><br><span class="line">	       .spoolDir=/root/data/</span><br><span class="line"><span class="comment">#是否使用当前文件头</span></span><br><span class="line">	       .fileHeader=<span class="literal">true</span></span><br></pre></td></tr></table></figure>
 <h2 id="exec：表示用shell命令，例如监控日志文件"><a href="#exec：表示用shell命令，例如监控日志文件" class="headerlink" title="exec：表示用shell命令，例如监控日志文件"></a>exec：表示用shell命令，例如监控日志文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a1.sources.r1.type=<span class="built_in">exec</span></span><br><span class="line">	       .<span class="built_in">command</span>=tail -F /root/test.log</span><br></pre></td></tr></table></figure>
 <h1 id="channel组件"><a href="#channel组件" class="headerlink" title="channel组件"></a>channel组件</h1><ul>
 <li>type类型：memory、file</li>
 </ul>
 <h2 id="memory：存在内存（易丢失）"><a href="#memory：存在内存（易丢失）" class="headerlink" title="memory：存在内存（易丢失）"></a>memory：存在内存（易丢失）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a1.channels.c1.type=memory</span><br><span class="line"><span class="comment">#存储--内存容量</span></span><br><span class="line">	      .capacity=10000</span><br><span class="line"><span class="comment">#传输--事物容量</span></span><br><span class="line">	      .transactionCapacity=100</span><br></pre></td></tr></table></figure>
-<h2 id="file：存在磁盘"><a href="#file：存在磁盘" class="headerlink" title="file：存在磁盘"></a>file：存在磁盘</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a1.channels.c1.type=file</span><br><span class="line"><span class="comment">#存储--内存容量</span></span><br><span class="line">	      .capacity=10000</span><br><span class="line"><span class="comment">#传输--事物容量</span></span><br><span class="line">	      .transactionCapacity=100</span><br></pre></td></tr></table></figure>
-<h1 id="sink组件"><a href="#sink组件" class="headerlink" title="sink组件"></a>sink组件</h1>
+<h2 id="file：存在磁盘（速度慢，容灾）"><a href="#file：存在磁盘（速度慢，容灾）" class="headerlink" title="file：存在磁盘（速度慢，容灾）"></a>file：存在磁盘（速度慢，容灾）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a1.channels.c1.type=file</span><br><span class="line"><span class="comment">#检查点目录</span></span><br><span class="line">	      .checkpointDir=/xx/xx/</span><br><span class="line"><span class="comment">#数据目录</span></span><br><span class="line">	      .dataDirs=/xx/xx/</span><br></pre></td></tr></table></figure>
+<ul>
+<li>检查点：<ul>
+<li>channel中有一个内存队列，存储已被source写入但未被sink消费的event的指针，event指针指向        dataDirs目录下数据文件存放的位置，检查点就是这个内存队列的快照</li>
+<li>每隔一段时间，就会将内存队列持久化到磁盘，即检查点目录</li>
+<li>内存队列持久化到磁盘时需要锁定写入，即此时source不能写数据，sink也不能读数据</li>
+</ul>
+</li>
+</ul>
+<h1 id="sink组件"><a href="#sink组件" class="headerlink" title="sink组件"></a>sink组件</h1><ul>
+<li>type类型：avro、logger、hdfs、kafka</li>
+</ul>
+<h2 id="avro：序列化"><a href="#avro：序列化" class="headerlink" title="avro：序列化"></a>avro：序列化</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a1. .<span class="built_in">type</span>=file</span><br><span class="line"><span class="comment">#检查点目录</span></span><br><span class="line">	      .checkpointDir=/xx/xx/</span><br><span class="line"><span class="comment">#数据目录</span></span><br><span class="line">	      .dataDirs=/xx/xx/</span><br></pre></td></tr></table></figure>
+<h2 id="logger：序列化"><a href="#logger：序列化" class="headerlink" title="logger：序列化"></a>logger：序列化</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a1. .<span class="built_in">type</span>=file</span><br><span class="line"><span class="comment">#检查点目录</span></span><br><span class="line">	      .checkpointDir=/xx/xx/</span><br><span class="line"><span class="comment">#数据目录</span></span><br><span class="line">	      .dataDirs=/xx/xx/</span><br></pre></td></tr></table></figure>
+<h2 id="hdfs：序列化"><a href="#hdfs：序列化" class="headerlink" title="hdfs：序列化"></a>hdfs：序列化</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a1. .<span class="built_in">type</span>=file</span><br><span class="line"><span class="comment">#检查点目录</span></span><br><span class="line">	      .checkpointDir=/xx/xx/</span><br><span class="line"><span class="comment">#数据目录</span></span><br><span class="line">	      .dataDirs=/xx/xx/</span><br></pre></td></tr></table></figure>
+<h2 id="avro：序列化-1"><a href="#avro：序列化-1" class="headerlink" title="avro：序列化"></a>avro：序列化</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">a1. .<span class="built_in">type</span>=file</span><br><span class="line"><span class="comment">#检查点目录</span></span><br><span class="line">	      .checkpointDir=/xx/xx/</span><br><span class="line"><span class="comment">#数据目录</span></span><br><span class="line">	      .dataDirs=/xx/xx/</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -499,7 +514,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -510,7 +525,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -543,7 +558,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#source组件"><span class="nav-number">1.</span> <span class="nav-text">source组件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#netcat：监控某个端口是否有数据"><span class="nav-number">1.1.</span> <span class="nav-text">netcat：监控某个端口是否有数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#avro：自带反序列化，和sink的avro（序列化）连用"><span class="nav-number">1.2.</span> <span class="nav-text">avro：自带反序列化，和sink的avro（序列化）连用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spooldir：监控目录变化"><span class="nav-number">1.3.</span> <span class="nav-text">spooldir：监控目录变化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exec：表示用shell命令，例如监控日志文件"><span class="nav-number">1.4.</span> <span class="nav-text">exec：表示用shell命令，例如监控日志文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#channel组件"><span class="nav-number">2.</span> <span class="nav-text">channel组件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#memory：存在内存（易丢失）"><span class="nav-number">2.1.</span> <span class="nav-text">memory：存在内存（易丢失）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#file：存在磁盘"><span class="nav-number">2.2.</span> <span class="nav-text">file：存在磁盘</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sink组件"><span class="nav-number">3.</span> <span class="nav-text">sink组件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#source组件"><span class="nav-number">1.</span> <span class="nav-text">source组件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#netcat：监控某个端口是否有数据"><span class="nav-number">1.1.</span> <span class="nav-text">netcat：监控某个端口是否有数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#avro：自带反序列化，和sink的avro（序列化）连用"><span class="nav-number">1.2.</span> <span class="nav-text">avro：自带反序列化，和sink的avro（序列化）连用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#spooldir：监控目录变化"><span class="nav-number">1.3.</span> <span class="nav-text">spooldir：监控目录变化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exec：表示用shell命令，例如监控日志文件"><span class="nav-number">1.4.</span> <span class="nav-text">exec：表示用shell命令，例如监控日志文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#channel组件"><span class="nav-number">2.</span> <span class="nav-text">channel组件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#memory：存在内存（易丢失）"><span class="nav-number">2.1.</span> <span class="nav-text">memory：存在内存（易丢失）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#file：存在磁盘（速度慢，容灾）"><span class="nav-number">2.2.</span> <span class="nav-text">file：存在磁盘（速度慢，容灾）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sink组件"><span class="nav-number">3.</span> <span class="nav-text">sink组件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#avro：序列化"><span class="nav-number">3.1.</span> <span class="nav-text">avro：序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#logger：序列化"><span class="nav-number">3.2.</span> <span class="nav-text">logger：序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hdfs：序列化"><span class="nav-number">3.3.</span> <span class="nav-text">hdfs：序列化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#avro：序列化-1"><span class="nav-number">3.4.</span> <span class="nav-text">avro：序列化</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -565,7 +580,7 @@
       <div class="footer-inner">
         <!--<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>-->
 
-<div class="copyright">&copy; <span itemprop="copyrightYear">2018-06-01</span>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018-06-05</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
